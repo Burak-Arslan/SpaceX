@@ -7,7 +7,6 @@ import com.example.spacex.R
 import com.example.spacex.databinding.FrHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class FRHome : BaseFragment<FrHomeBinding>() {
 
