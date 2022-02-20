@@ -36,6 +36,5 @@ class FRMainTab : BaseFragment<FrMainTabBinding>() {
     }
 
     override fun setReceiver() {}
-
 }
 

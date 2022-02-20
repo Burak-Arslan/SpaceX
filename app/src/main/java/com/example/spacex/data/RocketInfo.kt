@@ -14,5 +14,9 @@ data class RocketInfo(
     @ColumnInfo(name = "country")
     val country: String,
     @ColumnInfo(name = "company")
-    val company: String
+    val company: String,
+    @ColumnInfo(name = "isfavorite")
+    val isfavorite: Boolean,
+    @ColumnInfo(name = "imageUrl")
+    val imageUrl: String
 )

@@ -43,9 +43,17 @@ class FRHomeVM @Inject constructor(
                     0,
                     rocketName = item.name ?: "",
                     country = item.country ?: "",
-                    company = item.company ?: ""
+                    company = item.company ?: "",
+                    isfavorite = true,
+                    imageUrl = item.imageList?.get(0) ?: ""
                 )
             )
+        }
+    }
+
+    fun deleteRocket(item: RocketInfo) {
+        GlobalScope.launch {
+            repository.deleteRocket(item)
         }
     }
 }

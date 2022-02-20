@@ -5,6 +5,7 @@ import com.example.core.base.BaseFragment
 import com.example.core.extension.injectVM
 import com.example.core.extension.observe
 import com.example.spacex.R
+import com.example.spacex.data.RocketInfo
 import com.example.spacex.databinding.FrHomeBinding
 import com.example.spacex.domain.spacexlist.uimodel.RocketListUI
 import com.example.spacex.ui.SharedRocketVM
@@ -23,11 +24,12 @@ class FRHome : BaseFragment<FrHomeBinding>() {
     override fun getLayoutId() = R.layout.fr_home
 
     override fun initViews() {
-        adapterHome = object : AdapterHome() {
+        adapterHome = object : AdapterHome(){
             override fun onClickedMore(item: RocketListUI) {
                 viewModel.addRocket(item)
             }
         }
+
         vi.rcyclerMainList.apply {
             adapter = adapterHome
         }
