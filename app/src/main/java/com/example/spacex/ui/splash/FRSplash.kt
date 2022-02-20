@@ -24,7 +24,7 @@ class FRSplash : BaseFragment<FrSplashBinding>() {
     override fun setReceiver() {
         observe(viewModel.navigationNextValue){
             if(it.isTrue()){
-             navigate(FRSplashDirections.toFRHome())
+             navigate(FRSplashDirections.toFRMainTab())
             }
         }
     }

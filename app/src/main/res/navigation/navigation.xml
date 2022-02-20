@@ -11,13 +11,20 @@
         android:label="@string/splash_screen"
         tools:layout="@layout/fr_splash">
         <action
-            android:id="@+id/toFRHome"
-            app:destination="@id/FRHome" />
+            android:id="@+id/toFRMainTab"
+            app:destination="@id/FRMainTab" />
     </fragment>
-
     <fragment
-        android:id="@+id/FRHome"
-        android:name="com.example.spacex.ui.home.FRHome"
-        android:label="Home" />
+        android:id="@+id/FRMainTab"
+        android:name="com.example.spacex.ui.maintab.FRMainTab"
+        android:label="FRMainTab" >
+        <action
+            android:id="@+id/toFRDetail"
+            app:destination="@id/FRHomeDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/FRHomeDetail"
+        android:name="com.example.spacex.ui.homedetail.FRHomeDetail"
+        android:label="FRHomeDetail" />
 
 </navigation>

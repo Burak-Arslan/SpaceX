@@ -82,7 +82,7 @@ data class RocketAllListItem(
 	val firstFlight: String? = null,
 	val landingLegs: LandingLegs? = null,
 	val diameter: Diameter? = null,
-	val flickrImages: List<String?>? = null,
+	val flickr_images: List<String>? = null,
 	val firstStage: FirstStage? = null,
 	val engines: Engines? = null,
 	val name: String? = null,

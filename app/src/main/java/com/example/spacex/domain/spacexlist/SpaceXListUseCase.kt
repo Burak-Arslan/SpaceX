@@ -22,7 +22,16 @@ class SpaceXListUseCase @Inject constructor(
         return object : Mapper<RocketAllListItem, RocketListUI>() {
             override fun map(value: RocketAllListItem): RocketListUI {
                 with(value) {
-                    return RocketListUI(deneme = country)
+                    return RocketListUI(
+                        imageList = flickr_images,
+                        name = name,
+                        active = active,
+                        firstFlight = firstFlight,
+                        country = country,
+                        company = company,
+                        wikipedia = wikipedia,
+                        description = description
+                    )
                 }
             }
         }.map(response)

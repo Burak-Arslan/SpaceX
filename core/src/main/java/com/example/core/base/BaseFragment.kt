@@ -134,6 +134,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), OnBackPressListe
         super.onDestroy()
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
@@ -143,6 +144,11 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment(), OnBackPressListe
         }?.let {
             inflater.inflate(it, menu)
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
     }
 
     override fun isBackEnable() = false

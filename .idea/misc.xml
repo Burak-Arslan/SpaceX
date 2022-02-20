@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/default_pager_dot.xml" value="0.325" />
+        <entry key="app/src/main/res/drawable-v24/selected_pager_dot.xml" value="0.325" />
+        <entry key="app/src/main/res/drawable-v24/tab_pager_selector.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.34692028985507245" />
+        <entry key="app/src/main/res/layout/fr_favorite.xml" value="0.3845108695652174" />
         <entry key="app/src/main/res/layout/fr_home.xml" value="0.36367753623188404" />
+        <entry key="app/src/main/res/layout/fr_home_detail.xml" value="0.3845108695652174" />
+        <entry key="app/src/main/res/layout/fr_main_tab.xml" value="0.3845108695652174" />
         <entry key="app/src/main/res/layout/fr_splash.xml" value="0.36367753623188404" />
+        <entry key="app/src/main/res/layout/main_detail_viewpager_item.xml" value="0.3845108695652174" />
+        <entry key="app/src/main/res/layout/main_recycler_item.xml" value="0.3596014492753623" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.36367753623188404" />
       </map>
     </option>
