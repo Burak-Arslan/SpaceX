@@ -1,18 +1,19 @@
 package com.example.spacex.data
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class RocketRepository(private val rocketInfoDao: RocketInfoDao) {
+class RocketRepository @Inject constructor(private val rocketInfoDao: RocketInfoDao) {
 
-    suspend fun allList(): LiveData<List<RocketInfo>> {
+    fun allList(): Flow<List<RocketInfo>> {
         return rocketInfoDao.readAllRocketData()
     }
 
-    suspend fun addRocket(rocketInfo: RocketInfo) {
+    fun addRocket(rocketInfo: RocketInfo) {
         rocketInfoDao.addRocket(rocketInfo)
     }
 
-    suspend fun deleteRocket(rocketInfo: RocketInfo) {
+    fun deleteRocket(rocketInfo: RocketInfo) {
         rocketInfoDao.rocketDelete(rocketInfo)
     }
 }

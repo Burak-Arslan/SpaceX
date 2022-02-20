@@ -1,17 +1,17 @@
 package com.example.spacex.data
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RocketViewModel(application: Application) : AndroidViewModel(application) {
-    private val repository: RocketRepository
+class RocketViewModel(private val repository: RocketRepository) : ViewModel() {
 
-    init {
-        val rocketDao = RocketDatabase.getDatabase(application).rocketDao()
-        repository = RocketRepository(rocketDao)
+    fun getAllList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.allList()
+        }
     }
 
     fun addRocket(rocketInfo: RocketInfo) {

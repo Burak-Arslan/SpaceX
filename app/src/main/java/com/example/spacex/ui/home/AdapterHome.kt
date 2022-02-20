@@ -1,6 +1,7 @@
 package com.example.spacex.ui.home
 
 import androidx.recyclerview.widget.DiffUtil
+import coil.load
 import com.example.core.extension.setImageBitmap
 import com.example.core.ui.DataBindingAdapter
 import com.example.core.ui.DataBindingViewHolder
@@ -17,7 +18,7 @@ abstract class AdapterHome : DataBindingAdapter<RocketListUI>(RocketDiffCallBack
     override fun onBindViewHolder(holder: DataBindingViewHolder<RocketListUI>, position: Int) {
         super.onBindViewHolder(holder, position)
         val item = getItem(position)
-        (holder.binding as MainRecyclerItemBinding).imgRocket.setImageBitmap(item.imageList?.get(0) ?: "")
+        (holder.binding as MainRecyclerItemBinding).imgRocket.load(item.imageList?.get(0) ?: "")
         (holder.binding as MainRecyclerItemBinding).btnFavorite.setOnClickListener {
             onClickedMore(item)
         }
