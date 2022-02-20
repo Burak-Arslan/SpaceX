@@ -29,5 +29,4 @@ object DatabaseModule {
             "rocket_database"
         ).build()
     }
-
 }
