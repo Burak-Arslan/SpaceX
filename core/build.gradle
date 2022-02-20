@@ -73,4 +73,5 @@ dependencies {
     //Hilt For local unit tests
     testImplementation 'com.google.dagger:hilt-android-testing:2.37'
     kaptTest 'com.google.dagger:hilt-compiler:2.37'
+
 }

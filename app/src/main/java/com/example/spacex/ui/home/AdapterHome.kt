@@ -8,14 +8,19 @@ import com.example.spacex.R
 import com.example.spacex.databinding.MainRecyclerItemBinding
 import com.example.spacex.domain.spacexlist.uimodel.RocketListUI
 
-class AdapterHome : DataBindingAdapter<RocketListUI>(RocketDiffCallBack()) {
+abstract class AdapterHome : DataBindingAdapter<RocketListUI>(RocketDiffCallBack()) {
 
     override fun getItemLayoutId(viewType: Int) = R.layout.main_recycler_item
+
+    abstract fun onClickedMore(item: RocketListUI)
 
     override fun onBindViewHolder(holder: DataBindingViewHolder<RocketListUI>, position: Int) {
         super.onBindViewHolder(holder, position)
         val item = getItem(position)
         (holder.binding as MainRecyclerItemBinding).imgRocket.setImageBitmap(item.imageList?.get(0) ?: "")
+        (holder.binding as MainRecyclerItemBinding).btnFavorite.setOnClickListener {
+            onClickedMore(item)
+        }
     }
 
     class RocketDiffCallBack : DiffUtil.ItemCallback<RocketListUI>() {

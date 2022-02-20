@@ -5,6 +5,8 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
+    id 'org.jetbrains.kotlin.android'
+
 }
 
 android {
@@ -87,9 +89,18 @@ dependencies {
     //klaxon
     implementation 'com.beust:klaxon:5.5'
 
-
+    //Gson
     implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+
+    //Room
+    def room_version = "2.4.0-alpha03"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    implementation 'android.arch.persistence.room:runtime:1.1.1'
+    annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.5.0-alpha02"
 }
 kapt {
     correctErrorTypes true

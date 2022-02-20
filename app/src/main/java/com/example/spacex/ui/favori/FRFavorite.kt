@@ -5,6 +5,8 @@ import com.example.core.extension.injectVM
 import com.example.spacex.R
 import com.example.spacex.databinding.FrFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class FRFavorite : BaseFragment<FrFavoriteBinding>() {
@@ -14,7 +16,7 @@ class FRFavorite : BaseFragment<FrFavoriteBinding>() {
     override fun getLayoutId() = R.layout.fr_favorite
 
     override fun initViews() {
-        var test = ""
+        viewModel.initVM()
     }
 
     override fun setListener() {}
@@ -23,6 +25,8 @@ class FRFavorite : BaseFragment<FrFavoriteBinding>() {
 
     override fun onResume() {
         super.onResume()
-        var test = ""
+        GlobalScope.launch {
+            viewModel.getlAllList()
+        }
     }
 }

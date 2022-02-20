@@ -12,9 +12,12 @@ import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
-class FRHomeVM @Inject constructor(private val useCase: SpaceXListUseCase) : BaseViewModel() {
+class FRHomeVM @Inject constructor(
+    private val useCase: SpaceXListUseCase
+) : BaseViewModel() {
 
     var rocketList = SingleLiveEvent<List<RocketListUI>>()
+
     fun initVM() {
         getRocketList()
     }
