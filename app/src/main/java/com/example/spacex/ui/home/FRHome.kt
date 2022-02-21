@@ -3,7 +3,6 @@ package com.example.spacex.ui.home
 import android.app.AlertDialog
 import android.content.DialogInterface
 import androidx.navigation.navGraphViewModels
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.core.base.BaseFragment
 import com.example.core.extension.injectVM
 import com.example.core.extension.observe

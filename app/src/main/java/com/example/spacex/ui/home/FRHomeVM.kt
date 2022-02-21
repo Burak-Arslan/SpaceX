@@ -1,5 +1,6 @@
 package com.example.spacex.ui.home
 
+import androidx.annotation.VisibleForTesting
 import com.example.core.base.BaseViewModel
 import com.example.core.extension.launch
 import com.example.core.util.SingleLiveEvent
@@ -26,7 +27,8 @@ class FRHomeVM @Inject constructor(
         getRocketList()
     }
 
-    private fun getRocketList() = launch {
+    @VisibleForTesting
+    internal fun getRocketList() = launch {
         useCase(Unit)
             .onStart { showLoading() }
             .onCompletion { hideLoading() }

@@ -22,7 +22,8 @@ class FRHomeDetail : BaseFragment<FrHomeDetailBinding>() {
     override fun initViews() {
         viewModel.selectedRocketUI = sharedRocketVM.selectedRocketUI
         vi.imgDetailRocket.load(sharedRocketVM.selectedRocketUI?.imageUrl)
-        viewModel.setValue()
+        vi.txtDescription.text = sharedRocketVM.selectedRocketUI?.description
+        //viewModel.setValue()
     }
 
     override fun setListener() {}
