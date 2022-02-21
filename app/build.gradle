@@ -6,14 +6,13 @@ plugins {
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
     id 'org.jetbrains.kotlin.android'
-
 }
 
 android {
     compileSdk 31
     defaultConfig {
         applicationId "com.example.spacex"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -103,9 +102,14 @@ dependencies {
 
     //Mock
     implementation "io.mockk:mockk:1.12.0"
-    implementation "io.mockk:mockk-android:1.12.0"
     implementation "com.google.truth:truth:1.0.1"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0'"
+    kapt("com.google.dagger:hilt-android-compiler:2.38.1")
+    annotationProcessor "androidx.databinding:databinding-compiler:4.1.1"
+
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
 }
 kapt {
     correctErrorTypes true

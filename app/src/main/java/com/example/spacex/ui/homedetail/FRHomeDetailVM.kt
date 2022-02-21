@@ -1,27 +1,27 @@
 package com.example.spacex.ui.homedetail
 
 import com.example.core.base.BaseViewModel
-import com.example.core.util.SingleLiveEvent
 import com.example.spacex.data.RocketInfo
-import com.example.spacex.domain.spacexlist.uimodel.RocketImageListUI
-import com.example.spacex.domain.spacexlist.uimodel.RocketListUI
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FRHomeDetailVM @Inject constructor() : BaseViewModel(){
+class FRHomeDetailVM @Inject constructor() : BaseViewModel() {
 
-    var selectedRocketUI: RocketInfo? = null
+    var title = MutableStateFlow<String?>("")
+    var country = MutableStateFlow<String?>("")
+    var company = MutableStateFlow<String?>("")
+    var description = MutableStateFlow<String?>("")
 
-    var title = SingleLiveEvent<String>()
-    var country = SingleLiveEvent<String>()
-    var company = SingleLiveEvent<String>()
-    var description = SingleLiveEvent<String>()
-
-    fun setValue(){
-        title.postValue(selectedRocketUI?.rocketName)
-        country.postValue(selectedRocketUI?.country)
-        company.postValue(selectedRocketUI?.company)
-        description.postValue(selectedRocketUI?.description)
+    fun setValue(selectedRocketUI: RocketInfo?) {
+        GlobalScope.launch {
+            title.tryEmit(selectedRocketUI?.rocketName)
+            country.tryEmit(selectedRocketUI?.country)
+            company.tryEmit(selectedRocketUI?.company)
+            description.tryEmit(selectedRocketUI?.description)
+        }
     }
 }

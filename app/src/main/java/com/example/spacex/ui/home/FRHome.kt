@@ -54,7 +54,7 @@ class FRHome : BaseFragment<FrHomeBinding>() {
         }
     }
 
-    fun deleteDialog() {
+    private fun deleteDialog() {
         val dialogClickListener =
             DialogInterface.OnClickListener { dialog, which ->
                 when (which) {

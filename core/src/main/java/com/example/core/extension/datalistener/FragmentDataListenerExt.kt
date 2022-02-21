@@ -6,13 +6,14 @@ import com.example.core.base.BaseActivity
 import com.example.core.base.BaseFragment
 import com.example.core.base.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
+import androidx.databinding.library.baseAdapters.BR
 
 inline fun <reified VM : BaseViewModel> Lazy<VM>.bindingListener(owner: BaseFragment<*>) {
     with(owner) {
         lifecycleScope.launchWhenResumed {
             value.let { vm ->
                 vi.lifecycleOwner = owner
-                vi.setVariable(5, vm)
+                vi.setVariable(BR.item, vm)
                 vi.executePendingBindings()
             }
         }
