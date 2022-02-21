@@ -29,11 +29,7 @@ class FRMainTab : BaseFragment<FrMainTabBinding>() {
         }.attach()
     }
 
-    override fun setListener() {
-        vi.vpPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {}
-        })
-    }
+    override fun setListener() {}
 
     override fun setReceiver() {}
 }

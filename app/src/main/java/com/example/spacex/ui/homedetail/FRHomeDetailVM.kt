@@ -15,6 +15,7 @@ class FRHomeDetailVM @Inject constructor() : BaseViewModel() {
     var country = MutableStateFlow<String?>("")
     var company = MutableStateFlow<String?>("")
     var description = MutableStateFlow<String?>("")
+    var isFavorite = MutableStateFlow<String?>("")
 
     fun setValue(selectedRocketUI: RocketInfo?) {
         GlobalScope.launch {
@@ -22,6 +23,11 @@ class FRHomeDetailVM @Inject constructor() : BaseViewModel() {
             country.tryEmit(selectedRocketUI?.country)
             company.tryEmit(selectedRocketUI?.company)
             description.tryEmit(selectedRocketUI?.description)
+            if (selectedRocketUI?.isfavorite == true) {
+                isFavorite.emit("Favori")
+            } else {
+                isFavorite.emit("Favori Değil")
+            }
         }
     }
 }
