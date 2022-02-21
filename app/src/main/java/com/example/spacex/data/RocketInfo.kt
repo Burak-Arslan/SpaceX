@@ -18,5 +18,7 @@ data class RocketInfo(
     @ColumnInfo(name = "isfavorite")
     val isfavorite: Boolean,
     @ColumnInfo(name = "imageUrl")
-    val imageUrl: String
+    val imageUrl: String,
+    @ColumnInfo(name = "description")
+    val description: String
 )

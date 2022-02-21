@@ -28,7 +28,8 @@ class SpaceXListUseCase @Inject constructor(
                         country = country ?: "",
                         company = company ?: "",
                         isfavorite = false,
-                        imageUrl = flickr_images?.get(0) ?: ""
+                        imageUrl = flickr_images?.get(0) ?: "",
+                        description = description ?: ""
                     )
                 }
             }

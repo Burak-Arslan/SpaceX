@@ -30,10 +30,14 @@ class FRHomeVM @Inject constructor(
         useCase(Unit)
             .onStart { showLoading() }
             .onCompletion { hideLoading() }
-            .collect {
-                repository.addAll(it)
-                repository.allList().collect {
-                    rocketList.postValue(it)
+            .collect { item ->
+                repository.allList().collect { list ->
+                    if (list.isNotEmpty()) {
+                        rocketList.postValue(list)
+                    } else {
+                        repository.addAll(item)
+                        rocketList.postValue(item)
+                    }
                 }
             }
     }
@@ -51,7 +55,14 @@ class FRHomeVM @Inject constructor(
             item.country,
             item.company,
             isFavorite,
-            item.imageUrl
+            item.imageUrl,
+            item.description
         )
+    }
+
+    fun allDeleteRocket() {
+        GlobalScope.launch {
+            repository.deleteAllRocket()
+        }
     }
 }

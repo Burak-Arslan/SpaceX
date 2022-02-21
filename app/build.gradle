@@ -66,6 +66,7 @@ dependencies {
 //rounded imageview
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation "com.bladecoder.ink:blade-ink:1.0.0"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

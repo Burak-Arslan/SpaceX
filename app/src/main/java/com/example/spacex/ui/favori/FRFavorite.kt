@@ -26,9 +26,7 @@ class FRFavorite : BaseFragment<FrFavoriteBinding>() {
 
     override fun setReceiver() {
         observe(viewModel.allList) {
-            var test = ""
             adapterFavorite.submitList(it)
-            var testr = ""
         }
     }
 }

@@ -17,4 +17,7 @@ interface RocketInfoDao {
 
     @Query("SELECT * FROM rocket_info WHERE isfavorite = 1 ORDER BY id ASC")
     fun readAllFavorite(): Flow<List<RocketInfo>>
+
+    @Query("DELETE FROM rocket_info")
+    suspend fun deleteAllRocket()
 }
