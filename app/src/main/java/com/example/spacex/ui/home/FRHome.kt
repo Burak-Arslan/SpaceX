@@ -25,7 +25,7 @@ class FRHome : BaseFragment<FrHomeBinding>() {
 
     override fun initViews() {
         adapterHome = object : AdapterHome(){
-            override fun onClickedMore(item: RocketListUI) {
+            override fun onClickedMore(item: RocketInfo) {
                 viewModel.addRocket(item)
             }
         }

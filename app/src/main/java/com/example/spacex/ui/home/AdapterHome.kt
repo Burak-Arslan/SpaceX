@@ -5,29 +5,35 @@ import coil.load
 import com.example.core.ui.DataBindingAdapter
 import com.example.core.ui.DataBindingViewHolder
 import com.example.spacex.R
+import com.example.spacex.data.RocketInfo
 import com.example.spacex.databinding.MainRecyclerItemBinding
 import com.example.spacex.domain.spacexlist.uimodel.RocketListUI
 
-abstract class AdapterHome : DataBindingAdapter<RocketListUI>(RocketDiffCallBack()) {
+abstract class AdapterHome : DataBindingAdapter<RocketInfo>(RocketDiffCallBack()) {
 
     override fun getItemLayoutId(viewType: Int) = R.layout.main_recycler_item
 
-    abstract fun onClickedMore(item: RocketListUI)
+    abstract fun onClickedMore(item: RocketInfo)
 
-    override fun onBindViewHolder(holder: DataBindingViewHolder<RocketListUI>, position: Int) {
+    override fun onBindViewHolder(holder: DataBindingViewHolder<RocketInfo>, position: Int) {
         super.onBindViewHolder(holder, position)
         val item = getItem(position)
-        (holder.binding as MainRecyclerItemBinding).imgRocket.load(item.imageList?.get(0) ?: "")
+        (holder.binding as MainRecyclerItemBinding).imgRocket.load(item.imageUrl)
         (holder.binding as MainRecyclerItemBinding).btnFavorite.setOnClickListener {
             onClickedMore(item)
         }
+        if(item.isfavorite){
+            (holder.binding as MainRecyclerItemBinding).btnFavorite.text = "Çıkar"
+        }else{
+            (holder.binding as MainRecyclerItemBinding).btnFavorite.text = "Ekle"
+        }
     }
 
-    class RocketDiffCallBack : DiffUtil.ItemCallback<RocketListUI>() {
-        override fun areItemsTheSame(oldItem: RocketListUI, newItem: RocketListUI) =
+    class RocketDiffCallBack : DiffUtil.ItemCallback<RocketInfo>() {
+        override fun areItemsTheSame(oldItem: RocketInfo, newItem: RocketInfo) =
             oldItem == newItem
 
-        override fun areContentsTheSame(oldItem: RocketListUI, newItem: RocketListUI) =
+        override fun areContentsTheSame(oldItem: RocketInfo, newItem: RocketInfo) =
             oldItem == newItem
     }
 }

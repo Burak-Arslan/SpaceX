@@ -13,5 +13,5 @@ open class SharedRocketVM @Inject constructor(
     val handle: SavedStateHandle
 ) : BaseViewModel() {
 
-    var selectedRocketUI: RocketListUI? = null
+    var selectedRocketUI: RocketInfo? = null
 }

@@ -9,11 +9,15 @@ class RocketRepository @Inject constructor(private val rocketInfoDao: RocketInfo
         return rocketInfoDao.readAllRocketData()
     }
 
-    fun addRocket(rocketInfo: RocketInfo) {
-        rocketInfoDao.addRocket(rocketInfo)
+   suspend fun addAll(rocketInfo: List<RocketInfo>) {
+        rocketInfoDao.addAllRocket(rocketInfo)
     }
 
-    fun deleteRocket(rocketInfo: RocketInfo) {
-        rocketInfoDao.rocketDelete(rocketInfo)
+     fun readAllfavorite():Flow<List<RocketInfo>>{
+        return rocketInfoDao.readAllFavorite()
+    }
+
+    fun udpateRocket(rocketInfo: RocketInfo) {
+        rocketInfoDao.updateRocket(rocketInfo)
     }
 }

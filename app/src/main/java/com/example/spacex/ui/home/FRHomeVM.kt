@@ -6,7 +6,6 @@ import com.example.core.util.SingleLiveEvent
 import com.example.spacex.data.RocketInfo
 import com.example.spacex.data.RocketRepository
 import com.example.spacex.domain.spacexlist.SpaceXListUseCase
-import com.example.spacex.domain.spacexlist.uimodel.RocketListUI
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.collect
@@ -21,7 +20,7 @@ class FRHomeVM @Inject constructor(
     private val repository: RocketRepository
 ) : BaseViewModel() {
 
-    var rocketList = SingleLiveEvent<List<RocketListUI>>()
+    var rocketList = SingleLiveEvent<List<RocketInfo>>()
 
     fun initVM() {
         getRocketList()
@@ -32,28 +31,27 @@ class FRHomeVM @Inject constructor(
             .onStart { showLoading() }
             .onCompletion { hideLoading() }
             .collect {
-                rocketList.postValue(it)
+                repository.addAll(it)
+                repository.allList().collect {
+                    rocketList.postValue(it)
+                }
             }
     }
 
-    fun addRocket(item: RocketListUI) {
+    fun addRocket(item: RocketInfo) {
         GlobalScope.launch {
-            repository.addRocket(
-                RocketInfo(
-                    0,
-                    rocketName = item.name ?: "",
-                    country = item.country ?: "",
-                    company = item.company ?: "",
-                    isfavorite = true,
-                    imageUrl = item.imageList?.get(0) ?: ""
-                )
-            )
+            repository.udpateRocket(updateRocketItem(item, !item.isfavorite))
         }
     }
 
-    fun deleteRocket(item: RocketInfo) {
-        GlobalScope.launch {
-            repository.deleteRocket(item)
-        }
+    fun updateRocketItem(item: RocketInfo, isFavorite: Boolean): RocketInfo {
+        return RocketInfo(
+            item.id,
+            item.rocketName,
+            item.country,
+            item.company,
+            isFavorite,
+            item.imageUrl
+        )
     }
 }

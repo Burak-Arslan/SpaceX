@@ -17,7 +17,7 @@ class FRFavoriteVM @Inject constructor(private val repository: RocketRepository)
 
     fun getAllList() {
         GlobalScope.launch {
-            repository.allList().collect {
+            repository.readAllfavorite().collect {
                 allList.postValue(it)
             }
         }

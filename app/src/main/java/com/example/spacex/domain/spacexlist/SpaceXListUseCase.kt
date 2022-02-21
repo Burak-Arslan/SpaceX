@@ -3,7 +3,7 @@ package com.example.spacex.domain.spacexlist
 import com.example.core.base.UseCase
 import com.example.core.util.Mapper
 import com.example.core.util.ResProvider
-import com.example.spacex.domain.spacexlist.uimodel.RocketListUI
+import com.example.spacex.data.RocketInfo
 import com.example.spacex.repository.service.spacexlist.SpaceXRepository
 import com.example.spacex.repository.service.spacexlist.reqres.RocketAllListItem
 import kotlinx.coroutines.flow.Flow
@@ -13,24 +13,22 @@ import javax.inject.Inject
 class SpaceXListUseCase @Inject constructor(
     private val resProvider: ResProvider,
     private val repo: SpaceXRepository
-) : UseCase<Unit, List<RocketListUI>>() {
+) : UseCase<Unit, List<RocketInfo>>() {
 
-    override fun execute(params: Unit): Flow<List<RocketListUI>> =
+    override fun execute(params: Unit): Flow<List<RocketInfo>> =
         repo.getRocketList().map(::response2UI)
 
-    private fun response2UI(response: List<RocketAllListItem>): List<RocketListUI> {
-        return object : Mapper<RocketAllListItem, RocketListUI>() {
-            override fun map(value: RocketAllListItem): RocketListUI {
+    private fun response2UI(response: List<RocketAllListItem>): List<RocketInfo> {
+        return object : Mapper<RocketAllListItem, RocketInfo>() {
+            override fun map(value: RocketAllListItem): RocketInfo {
                 with(value) {
-                    return RocketListUI(
-                        imageList = flickr_images,
-                        name = name,
-                        active = active,
-                        firstFlight = firstFlight,
-                        country = country,
-                        company = company,
-                        wikipedia = wikipedia,
-                        description = description
+                    return RocketInfo(
+                        id = 0,
+                        rocketName = name ?: "",
+                        country = country ?: "",
+                        company = company ?: "",
+                        isfavorite = false,
+                        imageUrl = flickr_images?.get(0) ?: ""
                     )
                 }
             }
