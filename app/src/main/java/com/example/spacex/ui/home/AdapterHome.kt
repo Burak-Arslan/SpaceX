@@ -24,6 +24,7 @@ abstract class AdapterHome : DataBindingAdapter<RocketInfo>(RocketDiffCallBack()
         }
         if(item.isfavorite){
             (holder.binding as MainRecyclerItemBinding).btnFavorite.text = "Çıkar"
+            // git commit try
         }else{
             (holder.binding as MainRecyclerItemBinding).btnFavorite.text = "Ekle"
         }
